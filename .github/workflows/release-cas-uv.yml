@@ -18,23 +18,32 @@ jobs:
       matrix:
         include:
           - runner: windows-latest
+            target: x86_64-pc-windows-msvc
             os: windows
             arch: x86_64
             exe: ".exe"
             lib_src: "target/release/uvpy.dll"
             lib_asset: "libuvpy-windows-x86_64.dll"
           - runner: ubuntu-latest
+            target: x86_64-unknown-linux-gnu
             os: linux
             arch: x86_64
             exe: ""
             lib_src: "target/release/libuvpy.so"
             lib_asset: "libuvpy-linux-x86_64.so"
           - runner: macos-latest
+            target: aarch64-apple-darwin
             os: macos
             arch: aarch64
             exe: ""
             lib_src: "target/release/libuvpy.dylib"
             lib_asset: "libuvpy-macos-aarch64.dylib"
+
+    env:
+      CARGO_INCREMENTAL: '1'
+      CARGO_PROFILE_RELEASE_LTO: 'thin'
+      CARGO_PROFILE_RELEASE_CODEGEN_UNITS: '16'
+      CARGO_PROFILE_RELEASE_STRIP: 'symbols'
 
     steps:
       - name: Checkout
@@ -42,6 +51,12 @@ jobs:
 
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
+
+      - name: Damped Gravity Rust cache
+        uses: Swatinem/rust-cache@v2
+        with:
+          key: uv-${{ matrix.target }}
+          shared-key: damped-gravity-v11-${{ matrix.target }}
 
       - name: Build libuvpy-ffi
         run: cargo build --release -p libuvpy-ffi
@@ -76,11 +91,14 @@ jobs:
           path: dist-all
           merge-multiple: true
 
-      - name: Generate SHA256SUMS
+      - name: Generate SHA256SUMS & SHA512SUMS
         run: |
           cd dist-all
-          sha256sum * > SHA256SUMS.txt
+          sha256sum * > ../SHA256SUMS.txt
+          sha512sum * > ../SHA512SUMS.txt
+          mv ../SHA256SUMS.txt ../SHA512SUMS.txt .
           cat SHA256SUMS.txt
+          cat SHA512SUMS.txt
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
