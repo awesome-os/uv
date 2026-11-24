@@ -1,0 +1,13 @@
+[package]
+name = "libuvpy-ffi"
+version = "0.1.0"
+edition = { workspace = true }
+rust-version = { workspace = true }
+license = { workspace = true }
+description = "Awesome-OS B8G_ABI_MAGIC_V3 C-ABI shared library for Python uv CAS integration (libuvpy)"
+
+[lib]
+name = "uvpy"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]

@@ -1,0 +1,89 @@
+name: Release Awesome-OS CAS uv + libuvpy
+
+on:
+  push:
+    branches: ["main"]
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build (${{ matrix.os }} / ${{ matrix.arch }})
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: windows-latest
+            os: windows
+            arch: x86_64
+            exe: ".exe"
+            lib_src: "target/release/uvpy.dll"
+            lib_asset: "libuvpy-windows-x86_64.dll"
+          - runner: ubuntu-latest
+            os: linux
+            arch: x86_64
+            exe: ""
+            lib_src: "target/release/libuvpy.so"
+            lib_asset: "libuvpy-linux-x86_64.so"
+          - runner: macos-latest
+            os: macos
+            arch: aarch64
+            exe: ""
+            lib_src: "target/release/libuvpy.dylib"
+            lib_asset: "libuvpy-macos-aarch64.dylib"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Build libuvpy-ffi
+        run: cargo build --release -p libuvpy-ffi
+
+      - name: Build uv
+        run: cargo build --release --bin uv
+
+      - name: Stage release artifacts
+        shell: bash
+        run: |
+          mkdir -p release-assets
+          cp "target/release/uv${{ matrix.exe }}" "release-assets/uv-${{ matrix.os }}-${{ matrix.arch }}${{ matrix.exe }}"
+          cp "${{ matrix.lib_src }}" "release-assets/${{ matrix.lib_asset }}"
+          cp "include/libuvpy.h" "release-assets/libuvpy.h"
+          ls -lh release-assets
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: uv-${{ matrix.os }}-${{ matrix.arch }}
+          path: release-assets/*
+
+  release:
+    name: Publish GitHub Release
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: dist-all
+          merge-multiple: true
+
+      - name: Generate SHA256SUMS
+        run: |
+          cd dist-all
+          sha256sum * > SHA256SUMS.txt
+          cat SHA256SUMS.txt
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist-all/*
+          generate_release_notes: true
