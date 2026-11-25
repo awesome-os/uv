@@ -1,0 +1,109 @@
+{
+  "schema": "holo-compiler-lockfile-v1",
+  "abiMagic": "0x33564742",
+  "casLayout": "v11",
+  "repo": "awesome-os/uv",
+  "targets": [
+    "linux-x64",
+    "macos-arm64"
+  ],
+  "generatedAt": "2026-11-24T23:53:02.473Z",
+  "dependencies": [
+    {
+      "id": "awesome-os/uv/libuvpy-linux-x86_64.so",
+      "kind": "lib",
+      "version": "v0.1.0",
+      "target": "linux-x64",
+      "sha512": "2c5f323eedf004cbcc65fae6c10165741b6bcc94e9a67b43176525689498aed7f0789cdc4ec12b992d76c5938533117a9e1e416ef0277566b6dff86bd51cdae1",
+      "size": 313488,
+      "executable": false,
+      "blob": "v11/files/2c/2c5f323eedf004cbcc65fae6c10165741b6bcc94e9a67b43176525689498aed7f0789cdc4ec12b992d76c5938533117a9e1e416ef0277566b6dff86bd51cdae1",
+      "url": "https://github.com/awesome-os/uv/releases/download/v0.1.0/libuvpy-linux-x86_64.so",
+      "dependencies": []
+    },
+    {
+      "id": "awesome-os/uv/libuvpy-macos-aarch64.dylib",
+      "kind": "lib",
+      "version": "v0.1.0",
+      "target": "macos-arm64",
+      "sha512": "9b2af6d2cfcad6452d9345e2f46b7109e07bc45ec91567f64ffb6135e0a28b5e5be9f0a37eeaf2b1824d7a5569bc547d10a3aac1f8c312fc2fc8c79106fb361e",
+      "size": 302144,
+      "executable": false,
+      "blob": "v11/files/9b/9b2af6d2cfcad6452d9345e2f46b7109e07bc45ec91567f64ffb6135e0a28b5e5be9f0a37eeaf2b1824d7a5569bc547d10a3aac1f8c312fc2fc8c79106fb361e",
+      "url": "https://github.com/awesome-os/uv/releases/download/v0.1.0/libuvpy-macos-aarch64.dylib",
+      "dependencies": []
+    },
+    {
+      "id": "awesome-os/uv/libuvpy-windows-x86_64.dll",
+      "kind": "lib",
+      "version": "v0.1.0",
+      "target": "linux-x64",
+      "sha512": "fdb814f2503b0dd796fe0789289bcd845f6a1074b16f5f55703c7721fb53c3596d4d082d578e5b95efb6f9c55bb6d33fa4f350641543d8d2fcf80facacab5904",
+      "size": 217600,
+      "executable": false,
+      "blob": "v11/files/fd/fdb814f2503b0dd796fe0789289bcd845f6a1074b16f5f55703c7721fb53c3596d4d082d578e5b95efb6f9c55bb6d33fa4f350641543d8d2fcf80facacab5904",
+      "url": "https://github.com/awesome-os/uv/releases/download/v0.1.0/libuvpy-windows-x86_64.dll",
+      "dependencies": []
+    },
+    {
+      "id": "awesome-os/uv/libuvpy.h",
+      "kind": "object",
+      "version": "v0.1.0",
+      "target": "any",
+      "sha512": "bcf5101cc53c2d724838332e5a78b441c16d6a0f18b52bdca076bd87bf016fb8b382fe3b53b9935177e6455a0cf70b6f2fa1fcd8dc68bc1e20408345adf9ec56",
+      "size": 1184,
+      "executable": false,
+      "blob": "v11/files/bc/bcf5101cc53c2d724838332e5a78b441c16d6a0f18b52bdca076bd87bf016fb8b382fe3b53b9935177e6455a0cf70b6f2fa1fcd8dc68bc1e20408345adf9ec56",
+      "url": "https://github.com/awesome-os/uv/releases/download/v0.1.0/libuvpy.h",
+      "dependencies": []
+    },
+    {
+      "id": "awesome-os/uv/SHA256SUMS.txt",
+      "kind": "object",
+      "version": "v0.1.0",
+      "target": "any",
+      "sha512": "6ea803878135420fb162d473e5114a8acc5974abf88d35be8e64ee3cbf79fb1b0976cbdd93ddb823dbb02a45edb32a6e9417191fbe6cd2d3e408e8842330bbfc",
+      "size": 606,
+      "executable": false,
+      "blob": "v11/files/6e/6ea803878135420fb162d473e5114a8acc5974abf88d35be8e64ee3cbf79fb1b0976cbdd93ddb823dbb02a45edb32a6e9417191fbe6cd2d3e408e8842330bbfc",
+      "url": "https://github.com/awesome-os/uv/releases/download/v0.1.0/SHA256SUMS.txt",
+      "dependencies": []
+    },
+    {
+      "id": "awesome-os/uv/uv-linux-x86_64",
+      "kind": "bin",
+      "version": "v0.1.0",
+      "target": "linux-x64",
+      "sha512": "4739a28e033884e7bc44c78c7d1c8279fcdad78acb6a6bce7ededad0557086e729aca288b3eef4153ad0b60206016cc135d474cc580818ca1b80413008323ec9",
+      "size": 45313616,
+      "executable": true,
+      "blob": "v11/files/47/4739a28e033884e7bc44c78c7d1c8279fcdad78acb6a6bce7ededad0557086e729aca288b3eef4153ad0b60206016cc135d474cc580818ca1b80413008323ec9-exec",
+      "url": "https://github.com/awesome-os/uv/releases/download/v0.1.0/uv-linux-x86_64",
+      "dependencies": []
+    },
+    {
+      "id": "awesome-os/uv/uv-macos-aarch64",
+      "kind": "bin",
+      "version": "v0.1.0",
+      "target": "macos-arm64",
+      "sha512": "a920aa8caa3095bfaffb61f86ac5406255437df67e042f91670887edf9fd0af207cbeaf63dce9b0d51c876cee5883b80f37cd5a1e092b6e2df4379d6f6311326",
+      "size": 32698352,
+      "executable": true,
+      "blob": "v11/files/a9/a920aa8caa3095bfaffb61f86ac5406255437df67e042f91670887edf9fd0af207cbeaf63dce9b0d51c876cee5883b80f37cd5a1e092b6e2df4379d6f6311326-exec",
+      "url": "https://github.com/awesome-os/uv/releases/download/v0.1.0/uv-macos-aarch64",
+      "dependencies": []
+    },
+    {
+      "id": "awesome-os/uv/uv-windows-x86_64.exe",
+      "kind": "bin",
+      "version": "v0.1.0",
+      "target": "linux-x64",
+      "sha512": "e520470603b0a218556766ab89b227ac7d54dd2bf0fb1b82708cb8e669b411db7707003cf30ef89842364aac5a1680bf8a3dd3c516e907709def8fa551b47f28",
+      "size": 38304256,
+      "executable": true,
+      "blob": "v11/files/e5/e520470603b0a218556766ab89b227ac7d54dd2bf0fb1b82708cb8e669b411db7707003cf30ef89842364aac5a1680bf8a3dd3c516e907709def8fa551b47f28-exec",
+      "url": "https://github.com/awesome-os/uv/releases/download/v0.1.0/uv-windows-x86_64.exe",
+      "dependencies": []
+    }
+  ]
+}
