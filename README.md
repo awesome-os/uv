@@ -324,3 +324,13 @@ additional terms or conditions.
     <img src="https://raw.githubusercontent.com/astral-sh/uv/main/assets/svg/Astral.svg" alt="Made by Astral">
   </a>
 </div>
+
+## Quick Install & Run (Windows / Linux / macOS)
+
+```sh
+# Install / hydrate from v11 CAS via holo-pm
+holo-pm install repository://github.com/awesome-os/uv@main
+
+# Or project & run directly via holo-project (0-byte hardlink)
+holo-project "project://py/uv?from=repository://github.com/awesome-os/uv@main"
+```
